@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Eye, MoreHorizontal, Trash } from "lucide-react"
+import { Eye, MoreHorizontal, Pencil } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -22,49 +22,49 @@ const employees = [
     id: "1",
     name: "Rahul Sharma",
     status: "Paid",
-    date: "2023-04-15",
+    date: "2025-04-15",
     time: "10:30 AM",
   },
   {
     id: "2",
     name: "Priya Patel",
     status: "Not Paid",
-    date: "2023-04-10",
+    date: "2025-04-10",
     time: "09:15 AM",
   },
   {
     id: "3",
-    name: "Amit Kumar",
+    name: "John",
     status: "Paid",
-    date: "2023-04-05",
+    date: "2025-04-05",
     time: "11:45 AM",
   },
   {
     id: "4",
-    name: "Neha Singh",
+    name: "Sandeep",
     status: "Paid",
-    date: "2023-04-01",
+    date: "2025-04-01",
     time: "02:30 PM",
   },
   {
     id: "5",
-    name: "Vikram Malhotra",
+    name: "Harsh",
     status: "Not Paid",
-    date: "2023-03-28",
+    date: "2025-03-28",
     time: "03:45 PM",
   },
   {
     id: "6",
-    name: "Ananya Desai",
+    name: " Ajay",
     status: "Paid",
-    date: "2023-03-25",
+    date: "2025-03-25",
     time: "10:00 AM",
   },
   {
     id: "7",
-    name: "Rajesh Gupta",
+    name: "Chirag",
     status: "Not Paid",
-    date: "2023-03-20",
+    date: "2025-03-20",
     time: "01:15 PM",
   },
 ]
@@ -83,7 +83,7 @@ export default function EmployeesPage() {
       </div>
       <div className="flex items-center justify-between">
         <div className="w-full max-w-sm">
-          <Input placeholder="Search employees..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+          {/* <Input placeholder="Search employees..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} /> */}
         </div>
       </div>
       <div className="rounded-md border">
@@ -94,7 +94,7 @@ export default function EmployeesPage() {
               <TableHead>Payment Status</TableHead>
               <TableHead>Date</TableHead>
               <TableHead>Time</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
+              <TableHead className="text-center">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -107,7 +107,19 @@ export default function EmployeesPage() {
                 <TableCell>{employee.date}</TableCell>
                 <TableCell>{employee.time}</TableCell>
                 <TableCell className="text-right">
-                  <DropdownMenu>
+                  <div className="px-6 py-4 whitespace-nowrap flex justify-center items-center gap-4">
+                    <div className="flex items-center text-blue-600 hover:text-blue-900 text-sm"><Eye className="mr-2 h-4 w-4" /> View</div>
+                    <div className="flex items-center text-gray-600 hover:text-gray-900 text-sm"> <Pencil className="mr-2 h-4 w-4" /><a href="/admin/add-employee" className="dark:text-white">Edit</a></div>
+                  </div>
+                  {/* <td className="px-6 py-4 whitespace-nowrap flex items-center gap-4">
+                                    <button className="flex items-center text-blue-600 hover:text-blue-900 text-sm">
+                                      <Eye className="w-4 h-4 mr-1" /> View
+                                    </button>
+                                    <button className="flex items-center text-gray-600 hover:text-gray-900 text-sm">
+                                      <Pencil className="w-4 h-4 mr-1" /> <a href="/admin/add-employee">Edit</a>
+                                    </button>
+                                  </td> */}
+                  {/* <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button variant="ghost" size="icon">
                         <MoreHorizontal className="h-4 w-4" />
@@ -126,7 +138,7 @@ export default function EmployeesPage() {
                         Delete Employee
                       </DropdownMenuItem>
                     </DropdownMenuContent>
-                  </DropdownMenu>
+                  </DropdownMenu> */}
                 </TableCell>
               </TableRow>
             ))}
