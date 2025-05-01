@@ -1,7 +1,7 @@
 // app/last-transaction/page.tsx
-
+"use client"
 import React from "react";
-
+import { useEffect,useState } from "react";
 const LastTransactionPage = () => {
   const transactions = [
     { name: "Rahul", pid: "97897874487", date: "2025-04-15", time: "10:30 AM" },
@@ -10,11 +10,24 @@ const LastTransactionPage = () => {
     { name: "Gaurav", pid: "8598598598", date: "2025-04-01", time: "02:30 PM" },
     { name: "Chirag", pid: "7548878787", date: "2025-03-28", time: "03:45 PM" },
   ];
+const [monthValue, setMonthValue] = useState("");
 
+  useEffect(() => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0"); // pad with 0
+    setMonthValue(`${year}-${month}`); // format: "YYYY-MM"
+  }, []);
   return (
     <div className="container mx-auto p-8">
       <div className="flex items-center justify-between">
         <h2 className="text-3xl font-bold tracking-tight pb-6">All Transactions</h2>
+        <input
+      type="month"
+      value={monthValue}
+      onChange={(e) => setMonthValue(e.target.value)}
+      className="rounded border-2 border-gray-300 dark:border-gray-500 p-2"
+    />
       </div>
       <div className="bg-white shadow-md rounded-lg overflow-x-auto">
         <table className="min-w-full bg-white border border-gray-300 rounded-t-lg rounded-b-lg">
